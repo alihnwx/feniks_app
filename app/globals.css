@@ -78,7 +78,7 @@ header {
   color: var(--white);
 }
 
-.logo-mark svg {
+.logo-image {
   display: block;
 }
 
@@ -846,7 +846,7 @@ footer {
     min-width: 0;
   }
 
-  .logo-mark svg {
+  .logo-image {
     width: 30px;
     height: 30px;
     flex-shrink: 0;

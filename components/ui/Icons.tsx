@@ -1,24 +1,17 @@
+import Image from "next/image";
+
 export function Logo() {
   return (
     <div className="logo-mark">
-      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
-        <rect width="34" height="34" rx="8" fill="#3d6dff" />
-        <path
-          d="M9 22L17 9L25 22"
-          stroke="white"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M12.5 22L17 14.5L21.5 22"
-          stroke="white"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          opacity="0.55"
-        />
-      </svg>
+      <Image
+        src="/main_logo/feniks_logo.png"
+        alt="Feniks Logistics"
+        width={34}
+        height={34}
+        className="logo-image"
+        style={{ borderRadius: '8px' }}
+        priority
+      />
       <div className="logo-text">
         Feniks Logistics<span>International Freight</span>
       </div>
