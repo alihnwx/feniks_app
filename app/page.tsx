@@ -1036,7 +1036,7 @@ function Hero() {
             </p>
             <div className="hero-actions">
               <a className="btn-primary" href="tel:+77715441994">
-                Позвонить нам →
+                Позвонить нам
               </a>
               <Link className="btn-ghost" href="#services">
                 Смотреть услуги
@@ -1160,15 +1160,15 @@ function StatsBanner() {
         <div className="stats-grid">
           <div className="stat-block">
             <div className="num">
-              6<span>+</span>
+              60<span></span>
             </div>
-            <div className="cap">лет на рынке грузоперевозок</div>
+            <div className="cap">собственных машин</div>
           </div>
           <div className="stat-block">
             <div className="num">
-              6<span>+</span>
+              100<span></span>
             </div>
-            <div className="cap">стран международной доставки</div>
+            <div className="cap">привлеченных машин</div>
           </div>
           <div className="stat-block">
             <div className="num">
@@ -1178,9 +1178,9 @@ function StatsBanner() {
           </div>
           <div className="stat-block">
             <div className="num">
-              24<span>/7</span>
+              6<span></span>
             </div>
-            <div className="cap">поддержка и отслеживание груза</div>
+            <div className="cap">стран международной доставки</div>
           </div>
         </div>
       </div>
