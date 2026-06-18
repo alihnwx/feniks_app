@@ -144,7 +144,7 @@ function PageAssets() {
         @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
         :root {
-          --navy-deep: #0a1530;
+          --navy-deep: #152a60;
           --navy: #0e1f47;
           --navy-light: #16306b;
           --blue-accent: #3d6dff;
@@ -265,7 +265,9 @@ function PageAssets() {
         /* ===== HERO ===== */
         .hero {
           position: relative;
-          background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-light) 100%);
+          background:
+            linear-gradient(160deg, rgba(44, 73, 147, 0.41) 0%, rgba(14, 31, 71, 0.72) 55%, rgba(22, 48, 107, 0.7) 100%),
+            url('/background_image/ИП%20%E2%80%9CФеникс%E2%80%9D.jpg') center center / cover no-repeat;
           color: var(--white);
           padding: 168px 0 0;
           overflow: hidden;
@@ -280,10 +282,12 @@ function PageAssets() {
           background-size: 64px 64px;
           mask-image: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, transparent 75%);
           pointer-events: none;
+          z-index: 1;
         }
 
         .hero-inner {
           position: relative;
+          z-index: 2;
           display: grid;
           grid-template-columns: 1.15fr 0.85fr;
           gap: 40px;
@@ -480,6 +484,7 @@ function PageAssets() {
 
         .hero-bottom-bar {
           position: relative;
+          z-index: 2;
           border-top: 1px solid var(--line-light);
           padding: 22px 0;
         }
@@ -891,6 +896,11 @@ function PageAssets() {
 
         @media (max-width: 540px) {
           .wrap { padding: 0 20px; }
+          .hero {
+            background:
+              linear-gradient(160deg, rgba(21, 42, 96, 0.82) 0%, rgba(14, 31, 71, 0.78) 55%, rgba(22, 48, 107, 0.76) 100%),
+              url('/background_image/ИП%20%E2%80%9CФеникс%E2%80%9D.jpg') center center / cover no-repeat;
+          }
           .nav-row { height: 66px; gap: 10px; }
           .logo-mark { gap: 8px; min-width: 0; }
           .logo-mark svg { width: 30px; height: 30px; flex-shrink: 0; }
