@@ -16,10 +16,46 @@ const sponsorLogos = [
     height: 690,
   },
   {
+    name: "Rakhat",
+    src: "/sponsor_logos/Rakhat.png",
+    width: 378,
+    height: 204,
+  },
+  {
+    name: "Adler",
+    src: "/sponsor_logos/adler.jpeg",
+    width: 200,
+    height: 200,
+  },
+  {
+    name: "Alasintez",
+    src: "/sponsor_logos/alasintez.jpg",
+    width: 400,
+    height: 400,
+  },
+  {
     name: "Alina",
     src: "/sponsor_logos/alina.png",
     width: 654,
     height: 220,
+  },
+  {
+    name: "Алматинский завод",
+    src: "/sponsor_logos/ao_almatinskiy_zavod.jpg",
+    width: 1080,
+    height: 1080,
+  },
+  {
+    name: "Bericap",
+    src: "/sponsor_logos/bericap.webp",
+    width: 486,
+    height: 486,
+  },
+  {
+    name: "Cinkaz",
+    src: "/sponsor_logos/cinkaz.png",
+    width: 223,
+    height: 152,
   },
   {
     name: "Danone",
@@ -34,16 +70,70 @@ const sponsorLogos = [
     height: 55,
   },
   {
+    name: "Genau",
+    src: "/sponsor_logos/genau.png",
+    width: 1412,
+    height: 459,
+  },
+  {
+    name: "L'Oreal",
+    src: "/sponsor_logos/loreal.png",
+    width: 320,
+    height: 320,
+  },
+  {
+    name: "Magnum",
+    src: "/sponsor_logos/magnum.webp",
+    width: 480,
+    height: 270,
+  },
+  {
+    name: "Mars",
+    src: "/sponsor_logos/mars.png",
+    width: 300,
+    height: 168,
+  },
+  {
+    name: "Miko",
+    src: "/sponsor_logos/miko.jpeg",
+    width: 225,
+    height: 225,
+  },
+  {
+    name: "Pride KZ",
+    src: "/sponsor_logos/pridekz.png",
+    width: 246,
+    height: 150,
+  },
+  {
     name: "Qazalpack",
     src: "/sponsor_logos/qazalpack.svg",
     width: 508,
     height: 96,
   },
   {
+    name: "RG Brands",
+    src: "/sponsor_logos/rgbrands.jpeg",
+    width: 228,
+    height: 221,
+  },
+  {
     name: "Shin-Line",
     src: "/sponsor_logos/shin-line.svg",
     width: 121,
     height: 120,
+  },
+  {
+    name: "UzChem",
+    src: "/sponsor_logos/uzchem.png",
+    width: 225,
+    height: 225,
+  },
+  {
+    name: "Yakar",
+    src: "/sponsor_logos/yakar.jpeg",
+    width: 275,
+    height: 183,
   },
 ];
 
@@ -158,10 +248,13 @@ function PageAssets() {
           display: inline-flex;
           align-items: center;
           gap: 8px;
+          flex-shrink: 0;
           background: var(--white);
           color: var(--navy-deep);
           font-weight: 600;
           font-size: 14px;
+          line-height: 1;
+          white-space: nowrap;
           padding: 11px 20px;
           border-radius: 7px;
           transition: background 0.2s, transform 0.2s;
@@ -711,7 +804,7 @@ function PageAssets() {
         .sponsors-track {
           display: flex;
           width: max-content;
-          animation: sponsors-scroll 28s linear infinite;
+          animation: sponsors-scroll 48s linear infinite;
         }
 
         .sponsors-group {
@@ -798,6 +891,22 @@ function PageAssets() {
 
         @media (max-width: 540px) {
           .wrap { padding: 0 20px; }
+          .nav-row { height: 66px; gap: 10px; }
+          .logo-mark { gap: 8px; min-width: 0; }
+          .logo-mark svg { width: 30px; height: 30px; flex-shrink: 0; }
+          .logo-text {
+            font-size: 15.5px;
+            line-height: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .logo-text span { display: none; }
+          .nav-cta {
+            font-size: 12px;
+            padding: 9px 10px;
+            border-radius: 6px;
+          }
           .hero h1 { font-size: 32px; }
           .contact-right .big-link { font-size: 24px; }
           .sponsors-marquee { margin: 0 -20px; }
@@ -875,8 +984,8 @@ function RouteCard() {
         </div>
         <div className="route-point end">
           <span className="dot" />
-          <span className="city">Стамбул</span>
-          <span className="country">TR</span>
+          <span className="city">Ташкент</span>
+          <span className="country">UZ</span>
         </div>
       </div>
       <div className="route-stats">
@@ -1001,8 +1110,7 @@ function Services() {
             <span className="idx">01</span>
             <h3>Автомобильные перевозки</h3>
             <p>
-              Доставка грузов любого объёма по странам СНГ, Китаю, Турции и
-              Европе — собственный и партнёрский автопарк.
+              Доставка грузов любого объёма в Казахстан, Узбекистан, Россию, Китай, Ирак, Таджикистан и Туркменистан
             </p>
           </div>
           <div className="service-row">
@@ -1042,7 +1150,7 @@ function StatsBanner() {
         <div className="stats-grid">
           <div className="stat-block">
             <div className="num">
-              10<span>+</span>
+              6<span>+</span>
             </div>
             <div className="cap">лет на рынке грузоперевозок</div>
           </div>
@@ -1054,7 +1162,7 @@ function StatsBanner() {
           </div>
           <div className="stat-block">
             <div className="num">
-              500<span>+</span>
+              800<span>+</span>
             </div>
             <div className="cap">успешных перевозок в месяц</div>
           </div>
@@ -1117,7 +1225,7 @@ function Contact() {
           <div className="contact-left">
             <h2>Готовы обсудить вашу перевозку?</h2>
             <p>
-              Оставьте заявку или позвоните напрямую — рассчитаем маршрут,
+              Позвоните нам — рассчитаем маршрут,
               сроки и стоимость доставки в течение дня.
             </p>
 
