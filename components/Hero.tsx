@@ -22,7 +22,7 @@ export default function Hero() {
             </p>
             <div className="hero-actions">
               <a className="btn-primary" href="tel:+77715441994">
-                Позвонить нам →
+                Позвонить нам 
               </a>
               <Link className="btn-ghost" href="#services">
                 Смотреть услуги
