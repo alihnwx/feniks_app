@@ -7,7 +7,7 @@
   --navy-light: #16306b;
   --blue-accent: #3d6dff;
   --white: #ffffff;
-  --paper: #f30000;
+  --paper: #87afff;
   --ink: #0a1530;
   --grey: #5b6478;
   --line: rgba(10, 21, 48, 0.1);
@@ -388,7 +388,7 @@ nav.links a:hover {
 }
 
 .values {
-  background: var(--paper);
+  background: var(--white);
   padding: 90px 0;
 }
 
