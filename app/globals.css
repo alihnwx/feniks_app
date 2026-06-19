@@ -353,13 +353,13 @@ nav.links a:hover {
 
 .route-stats .stat .num {
   font-family: 'Archivo', sans-serif;
-  font-size: 21px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--white);
 }
 
 .route-stats .stat .cap {
-  font-size: 9px;
+  font-size: 11px;
   color: #8295c7;
   margin-top: 3px;
 }
