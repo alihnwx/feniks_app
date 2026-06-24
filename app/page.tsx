@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import SponsorsMarquee from "@/components/SponsorsMarquee";
-import StatsBanner from "@/components/StatsBanner";
-import Values from "@/components/Values";
+import Contact from "@/components/modules/Contact";
+import Footer from "@/components/layouts/Footer";
+import Header from "@/components/layouts/Header";
+import Hero from "@/components/modules/Hero";
+import Services from "@/components/modules/Services";
+import SponsorsMarquee from "@/components/modules/SponsorsMarquee";
+import StatsBanner from "@/components/modules/StatsBanner";
+import Values from "@/components/modules/Values";
 
 export const metadata: Metadata = {
   title: "Феникс Логистикс — международные грузоперевозки",
