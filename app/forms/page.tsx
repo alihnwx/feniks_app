@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Заполните форму и скачайте готовую заявку, за пару минут!",
 };
 
-export default function Forms() {
+export default function Home() {
     return (
         <>
         <Header />
