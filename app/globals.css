@@ -121,8 +121,8 @@ nav.links a:hover {
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
-  background: var(--white);
-  color: var(--navy-deep);
+  background: var(--blue-accent);
+  color: var(--white);
   font-weight: 600;
   font-size: 14px;
   line-height: 1;
@@ -133,7 +133,7 @@ nav.links a:hover {
 }
 
 .nav-cta:hover {
-  background: #d9e2ff;
+  background: #2a57e0;
   transform: translateY(-1px);
 }
 
