@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { ClockIcon, PhoneIcon, PinIcon } from "@/components/ui/Icons";
 
 export default function Contact() {
@@ -52,9 +54,14 @@ export default function Contact() {
             <a className="big-link" href="tel:+77715441994">
               +7 (771) 544 19 94
             </a>
-            <a className="btn-primary" href="tel:+77715441994">
-              Заказать звонок →
-            </a>
+            <div className="contact-actions">
+              <a className="btn-primary" href="tel:+77715441994">
+                Заказать звонок →
+              </a>
+              <Link className="btn-ghost" href="/forms">
+                Заполнить заявку →
+              </Link>
+            </div>
           </div>
         </div>
       </div>

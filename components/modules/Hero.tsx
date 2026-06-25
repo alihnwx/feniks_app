@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import RouteCard from "@/components/RouteCard";
+import RouteCard from "@/components/modules/RouteCard";
 
 export default function Hero() {
   return (
