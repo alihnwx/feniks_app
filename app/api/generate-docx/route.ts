@@ -1,139 +1,59 @@
-import Docxtemplater from "docxtemplater";
-import { readFile } from "fs/promises";
+// app/api/generate-docx/route.ts
 import { NextResponse } from "next/server";
+import fs from "fs/promises";
 import path from "path";
-import PizZip from "pizzip";
-
-import {
-  type ApplicationFormData,
-  isApplicationFormValid,
-  mapFormDataToTemplate,
-} from "@/lib/application-form";
-import { injectPlaceholders } from "@/lib/prepare-docx-template";
-
-export const runtime = "nodejs";
-
-const TEMPLATE_PATH = path.join(process.cwd(), "public", "template.docx");
-
-function isApplicationFormData(value: unknown): value is ApplicationFormData {
-  if (!value || typeof value !== "object") {
-    return false;
-  }
-
-  const keys: (keyof ApplicationFormData)[] = [
-    "naimenovanieGruza",
-    "harakteristikaGruza",
-    "massaGruza",
-    "usloviyaOsushchestvleniya",
-    "trebovaniyaTransportu",
-    "gruzootpravitel",
-    "adresPogruzki",
-    "dataPogruzki",
-    "telefonPogruzki",
-    "gruzopoluchatel",
-    "adresRazgruzki",
-    "dataRazgruzki",
-    "telefonRazgruzki",
-    "kommentariy",
-    "plata",
-    "perevozchik",
-    "modelNomer",
-    "dannyeVoditelya",
-    "pib",
-  ];
-
-  return keys.every((key) => typeof (value as ApplicationFormData)[key] === "string");
-}
+import { mapFormDataToTemplate, type ApplicationFormData } from "@/lib/application-form";
+import { generateDocx } from "@/lib/docx-generator";
 
 export async function POST(request: Request) {
-  let body: unknown;
-
   try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json(
-      { error: "Некорректный JSON в теле запроса." },
-      { status: 400 },
-    );
-  }
+    // 1. Получаем данные из тела запроса
+    const body: ApplicationFormData = await request.json();
 
-  if (!isApplicationFormData(body)) {
-    return NextResponse.json(
-      { error: "Отсутствуют обязательные поля формы." },
-      { status: 400 },
-    );
-  }
-
-  if (!isApplicationFormValid(body)) {
-    return NextResponse.json(
-      { error: "Все поля формы должны быть заполнены." },
-      { status: 400 },
-    );
-  }
-
-  let templateBuffer: Buffer;
-
-  try {
-    templateBuffer = await readFile(TEMPLATE_PATH);
-  } catch (error) {
-    const nodeError = error as NodeJS.ErrnoException;
-
-    if (nodeError.code === "ENOENT") {
-      return NextResponse.json(
-        { error: "Файл шаблона template.docx не найден." },
-        { status: 404 },
-      );
+    // 2. Валидируем на стороне сервера (минимальная проверка)
+    if (!body) {
+      return NextResponse.json({ error: "Данные формы пусты" }, { status: 400 });
     }
 
-    return NextResponse.json(
-      { error: "Не удалось прочитать файл шаблона." },
-      { status: 500 },
-    );
-  }
-
-  try {
-    const zip = new PizZip(templateBuffer);
-    const documentFile = zip.file("word/document.xml");
-
-    if (!documentFile) {
-      return NextResponse.json(
-        { error: "Некорректная структура шаблона template.docx." },
-        { status: 500 },
-      );
+    // 3. Формируем путь к шаблону в папке public
+    const templatePath = path.join(process.cwd(), "public", "template.docx");
+    
+    // Читаем файл шаблона
+    let templateBuffer: Buffer;
+    try {
+      templateBuffer = await fs.readFile(templatePath);
+    } catch (fsError) {
+      console.error("Ошибка чтения файла шаблона:", fsError);
+      return NextResponse.json({ error: "Шаблон документа не найден на сервере" }, { status: 500 });
     }
 
-    zip.file("word/document.xml", injectPlaceholders(documentFile.asText()));
-
-    const doc = new Docxtemplater(zip, {
-      paragraphLoop: true,
-      linebreaks: true,
-    });
-
+    // 4. Маппим данные формы в кириллические плейсхолдеры для шаблона
     const templateData = mapFormDataToTemplate(body);
 
-    // Оба ключа заполняются: {телефон_погрузки} и {телефон_разгрузки}.
-    doc.render(templateData);
+    // 5. Генерируем заполненный документ
+    const outputBuffer = generateDocx(templateBuffer, templateData);
 
-    const output = doc.getZip().generate({
-      type: "nodebuffer",
-      compression: "DEFLATE",
-    });
+    // 6. Формируем заголовки для скачивания файла браузером
+    const headers = new Headers();
+    headers.set(
+      "Content-Type",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    );
+    headers.set(
+      "Content-Disposition",
+      `attachment; filename="Zayavka_na_perevozku.docx"`
+    );
 
-    return new NextResponse(new Uint8Array(output), {
+    // Возвращаем буфер файла
+    return new NextResponse(new Uint8Array(outputBuffer), {
       status: 200,
-      headers: {
-        "Content-Type":
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        "Content-Disposition":
-          'attachment; filename="Zayavka_na_perevozku.docx"',
-      },
+      headers,
     });
   } catch (error) {
-    console.error("DOCX generation failed:", error);
-
+    console.error("Ошибка при генерации DOCX:", error);
     return NextResponse.json(
-      { error: "Ошибка при генерации документа. Проверьте шаблон." },
-      { status: 500 },
+      { error: "Внутренняя ошибка сервера при генерации документа" },
+      { status: 500 }
     );
   }
-}
+};

@@ -43,7 +43,7 @@ export const EMPTY_APPLICATION_FORM: ApplicationFormData = {
 };
 
 export function isApplicationFormValid(data: ApplicationFormData): boolean {
-  return Object.values(data).every((value) => value.trim().length > 0);
+  return true; // Теперь форма всегда считается валидной
 }
 
 export function mapFormDataToTemplate(data: ApplicationFormData) {

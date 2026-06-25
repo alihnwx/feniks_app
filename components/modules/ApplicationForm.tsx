@@ -28,7 +28,7 @@ const FORM_SECTIONS: FormSection[] = [
       {
         key: "naimenovanieGruza",
         label: "Наименование груза",
-        placeholder: "Например: строительные материалы",
+        placeholder: "Например: пустые банки",
       },
       {
         key: "harakteristikaGruza",
@@ -40,7 +40,7 @@ const FORM_SECTIONS: FormSection[] = [
       {
         key: "massaGruza",
         label: "Масса груза",
-        placeholder: "Например: 12 т",
+        placeholder: "Например: 20т",
       },
       {
         key: "plata",
@@ -94,7 +94,6 @@ const FORM_SECTIONS: FormSection[] = [
       {
         key: "telefonPogruzki",
         label: "Контакты погрузки",
-        placeholder: "+7 (___) ___-__-__",
       },
     ],
   },
@@ -122,13 +121,12 @@ const FORM_SECTIONS: FormSection[] = [
       {
         key: "telefonRazgruzki",
         label: "Контакты разгрузки",
-        placeholder: "+7 (___) ___-__-__",
       },
     ],
   },
   {
     title: "Данные транспорта и перевозчика",
-    description: "Информация о перевозчике, транспортном средстве и водителе.",
+    description: "Информация о перевозчике, transportном средстве и водителе.",
     fields: [
       {
         key: "perevozchik",
@@ -146,12 +144,6 @@ const FORM_SECTIONS: FormSection[] = [
         label: "Данные водителя",
         placeholder: "ФИО, телефон, удостоверение",
         type: "textarea",
-        fullWidth: true,
-      },
-      {
-        key: "pib",
-        label: "ПИБ",
-        placeholder: "ФИО ответственного лица",
         fullWidth: true,
       },
     ],
@@ -211,7 +203,7 @@ export default function ApplicationForm() {
       const downloadUrl = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = downloadUrl;
-      link.download = "Zayavka_na_perevozku.docx";
+      link.download = "заявка-на-перевозку.docx";
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -296,9 +288,6 @@ export default function ApplicationForm() {
           </p>
         ) : (
           <p className="form-hint">
-            {isValid
-              ? "Все поля заполнены — можно скачать заявку."
-              : "Заполните все обязательные поля, чтобы скачать документ."}
           </p>
         )}
 

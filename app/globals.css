@@ -239,17 +239,17 @@ nav.links a:hover {
   align-items: center;
   gap: 8px;
   border: 1px solid rgba(255, 255, 255, 0.22);
-  color: var(--white);
+  background: var(--white);
   font-weight: 600;
   font-size: 15px;
   padding: 15px 24px;
   border-radius: 8px;
-  transition: border-color 0.2s, background 0.2s;
+  transition: transform 0.2s, background 0.2s;
 }
 
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(216, 230, 251, 0.9);
+  transform: translateY(-1px);
 }
 
 .route-card {
