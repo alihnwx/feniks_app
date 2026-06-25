@@ -43,11 +43,6 @@ const FORM_SECTIONS: FormSection[] = [
         placeholder: "Например: 20т",
       },
       {
-        key: "plata",
-        label: "Плата за перевозку",
-        placeholder: "Сумма и условия оплаты",
-      },
-      {
         key: "usloviyaOsushchestvleniya",
         label: "Условия осуществления",
         placeholder: "Условия перевозки",
@@ -67,6 +62,11 @@ const FORM_SECTIONS: FormSection[] = [
         placeholder: "Дополнительная информация",
         type: "textarea",
         fullWidth: true,
+      },
+            {
+        key: "plata",
+        label: "Плата за перевозку",
+        placeholder: "Сумма и условия оплаты",
       },
     ],
   },
