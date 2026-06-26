@@ -10,7 +10,7 @@ import StatsBanner from "@/components/modules/StatsBanner";
 import Values from "@/components/modules/Values";
 
 export const metadata: Metadata = {
-  title: "Феникс Логистикс — международные грузоперевозки",
+  title: "Feniks Logistics. Международные грузоперевозки",
   description:
     "Международные грузоперевозки под ключ: маршруты, таможенное оформление, складская логистика и доставка.",
 };
